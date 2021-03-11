@@ -10,6 +10,9 @@ import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import software.examen.R;
 
 @NonReusable
@@ -25,19 +28,26 @@ public class Revista {
     TextView txtDescripcion;
 
     private Context mContext;
-    private String url;
+    private JSONObject itemRevista;
 
-    public Revista(Context context, String url){
-        mContext = context;
-        this.url = url;
+    public Revista(Context context, JSONObject itemRevista){
+        this.mContext = context;
+        this.itemRevista = itemRevista;
     }
 
     @Resolve
     protected void onResolved(){
-        //Esto para cargar una url en la imagen
-        //Glide.with(this.mContext).load(this.url).into(this.imgPortada);
+        try{
+            //Esto para cargar una url en la imagen
+            //Glide.with(this.mContext).load(this.url).into(this.imgPortada);
 
-        //Esto para establecer datos en las vistas
-        this.txtNombre.setText("asfaf");
+            //Esto para establecer datos en las vistas
+            this.txtNombre.setText(this.itemRevista.getString("name"));
+            this.txtDescripcion.setText(this.itemRevista.getString("description"));
+            Glide.with(this.mContext).load(this.itemRevista.getString("portada")).into(this.imgPortada);
+        }
+        catch (JSONException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 }

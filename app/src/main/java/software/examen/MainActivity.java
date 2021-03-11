@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.mindorks.placeholderview.PlaceHolderView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,6 +21,8 @@ import software.examen.WebService.WebService;
 
 public class MainActivity extends AppCompatActivity implements Asynchtask {
 
+    PlaceHolderView phvRevistas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +33,22 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
                 datos, this, this);
         ws.execute("GET");
 
-        PlaceHolderView phvRevistas = findViewById(R.id.phvRevistas);
-        phvRevistas.addView(new Revista(getApplicationContext(), "Mi url 1"));
-        phvRevistas.addView(new Revista(getApplicationContext(), "Mi url 2"));
+        this.phvRevistas = findViewById(R.id.phvRevistas);
     }
 
     @Override
     public void processFinish(String result) throws JSONException {
 
+        try {
+            JSONArray jsonArray = new JSONArray(result);
+
+            for (int i = 0; i < jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                this.phvRevistas.addView(new Revista(getApplicationContext(), jsonObject));
+            }
+        }
+        catch (JSONException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 }

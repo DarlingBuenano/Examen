@@ -1,19 +1,19 @@
-package software.examen;
-
+package software.examen.Modelo;
 
 import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.View;
 
+import software.examen.R;
 
 @NonReusable
 @Layout(R.layout.revistas)
-
-public class PlaceHolderView {
+public class Revista {
     @View(R.id.imgPortada)
     ImageView imgPortada;
 
@@ -26,7 +26,9 @@ public class PlaceHolderView {
     private Context mContext;
     private String url;
 
-    public PlaceHolderView(Context context){
-
+    public Revista(Context context, String url){
+        mContext = context;
+        txtDescripcion.setText("aefafgag");
+        this.url = url;
     }
 }

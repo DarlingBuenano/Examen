@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
         ws.execute("GET");
 
         PlaceHolderView phvRevistas = findViewById(R.id.phvRevistas);
-        phvRevistas.addView(new Revista(getApplicationContext()));
-        phvRevistas.addView(new Revista(getApplicationContext()));
+        phvRevistas.addView(new Revista(getApplicationContext(), "Mi url 1"));
+        phvRevistas.addView(new Revista(getApplicationContext(), "Mi url 2"));
     }
 
     @Override

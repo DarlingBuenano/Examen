@@ -86,4 +86,17 @@
         android:textColor="#1E1E1E"
         android:text="Number"/>
 
+    <TextView
+        android:id="@+id/txtIssue_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtNumber"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toEndOf="@+id/imgCover"
+        android:textColor="#1E1E1E"
+        android:text="issue_id"/>
+
 </RelativeLayout>

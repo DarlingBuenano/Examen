@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_marginBottom="30dp">
+
+    <TextView
+        android:id="@+id/txtTitle_article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textStyle="bold"
+        android:textColor="#007372"/>
+
+    <TextView
+        android:id="@+id/txtAbstract_article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Abstract"
+        android:textColor="#1E1E1E"
+        android:layout_below="@id/txtTitle_article"/>
+
+    <TextView
+        android:id="@+id/txtDoi_article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Doi"
+        android:textColor="#1E1E1E"
+        android:layout_below="@id/txtAbstract_article"/>
+
+    <TextView
+        android:id="@+id/txtPublication_article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Publication id"
+        android:textColor="#1E1E1E"
+        android:layout_below="@id/txtDoi_article"/>
+
+    <TextView
+        android:id="@+id/txtDataPublished_article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DataPublished"
+        android:textColor="#1E1E1E"
+        android:layout_below="@id/txtPublication_article"/>
+
+    <TextView
+        android:id="@+id/txtKeyWords_article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Key Words"
+        android:textColor="#1E1E1E"
+        android:layout_below="@id/txtDataPublished_article"/>
+
+    <TextView
+        android:id="@+id/txtAuthors_article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Authors"
+        android:textColor="#1E1E1E"
+        android:layout_below="@id/txtKeyWords_article"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPDF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtAuthors_article"
+        android:text="PDF"
+        android:linksClickable="true"
+        android:autoLink="web"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnHTML"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtAuthors_article"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/btnPDF"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:text="HTML" />
+
+</RelativeLayout>

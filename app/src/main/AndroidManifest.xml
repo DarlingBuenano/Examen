@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Examen">
-        <activity android:name=".Volumenes"></activity>
+        <activity android:name=".Articulos"></activity>
+        <activity android:name=".Volumenes" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

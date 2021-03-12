@@ -1,10 +1,12 @@
 package software.examen.Modelo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Resolve;
@@ -14,6 +16,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import software.examen.R;
+import software.examen.Volumenes;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 @NonReusable
 @Layout(R.layout.revistas)
@@ -50,4 +55,16 @@ public class Revista {
             System.out.println(ex.getMessage());
         }
     }
+
+    @Click(R.id.rlCard)
+    public void ClicrlCard(){
+        Intent cambiarActivity = new Intent(this.mContext, Volumenes.class);
+        try {
+            cambiarActivity.putExtra("journal_id", this.itemRevista.getString("journal_id"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        mContext.startActivity(cambiarActivity);
+    }
+
 }

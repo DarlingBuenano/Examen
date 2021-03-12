@@ -18,8 +18,6 @@ import org.json.JSONObject;
 import software.examen.R;
 import software.examen.Volumenes;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 @NonReusable
 @Layout(R.layout.revistas)
 public class Revista {

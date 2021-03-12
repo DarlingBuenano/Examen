@@ -5,6 +5,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.mindorks.placeholderview.annotations.Layout;
+import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 
@@ -13,6 +15,8 @@ import org.json.JSONObject;
 
 import software.examen.R;
 
+@NonReusable
+@Layout(R.layout.volumenes)
 public class Volumen {
 
     @View(R.id.imgCover)
@@ -57,6 +61,7 @@ public class Volumen {
             txtVolume.setText(jsonVolumen.getString("volume"));
             txtYear.setText(jsonVolumen.getString("year"));
             txtNumber.setText(jsonVolumen.getString("number"));
+            txtIssue_id.setText(jsonVolumen.getString("issue_id"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

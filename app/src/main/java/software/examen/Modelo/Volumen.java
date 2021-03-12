@@ -56,7 +56,7 @@ public class Volumen {
     }
 
     @Resolve
-    protected void onResolved(){
+    public void onResolved(){
         try {
             Glide.with(this.context).load(jsonVolumen.getString("cover")).into(this.imgCover);
             txtTitle.setText( "Título: " + jsonVolumen.getString("title"));

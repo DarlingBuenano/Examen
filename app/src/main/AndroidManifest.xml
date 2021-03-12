@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Examen">
-        <activity android:name=".Articulos"></activity>
+        <activity android:name=".pdf"></activity>
+        <activity android:name=".Articulos" />
         <activity android:name=".Volumenes" />
 
         <meta-data

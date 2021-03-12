@@ -1,8 +1,11 @@
 package software.examen.Modelo;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.widget.TextView;
 
+import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Resolve;
@@ -75,6 +78,16 @@ public class Articulo {
 
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Click(R.id.btnPDF)
+    public void DescargarPDF(){
+        try {
+            String URL_PDF = jsonArticulo.getJSONArray("galeys").getJSONObject(0).getString("UrlViewGalley");
+            this.context.startActivity( new Intent(Intent.ACTION_VIEW, Uri.parse(URL_PDF)));
+        } catch (JSONException e) {
+            System.out.println("Ha ocurrido un error al descargar el PDF: " + e.getMessage());
         }
     }
 }

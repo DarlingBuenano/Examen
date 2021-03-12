@@ -1,8 +1,10 @@
 package software.examen.Modelo;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Environment;
 import android.widget.TextView;
 
 import com.mindorks.placeholderview.annotations.Click;
@@ -82,10 +84,30 @@ public class Articulo {
     }
 
     @Click(R.id.btnPDF)
-    public void DescargarPDF(){
+    public void Descargar_PDF(){
         try {
-            String URL_PDF = jsonArticulo.getJSONArray("galeys").getJSONObject(0).getString("UrlViewGalley");
-            this.context.startActivity( new Intent(Intent.ACTION_VIEW, Uri.parse(URL_PDF)));
+            String URL = jsonArticulo.getJSONArray("galeys").getJSONObject(0).getString("UrlViewGalley");
+            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(URL));
+            request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+            request.setTitle("Descargando publicacion " + jsonArticulo.getString("publication_id"));
+            request.setDescription("Descargando pdf");
+
+            request.allowScanningByMediaScanner();
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "Publicacion " + jsonArticulo.getString("publication_id") + ".pdf");
+
+            DownloadManager manager = (DownloadManager) this.context.getSystemService(this.context.DOWNLOAD_SERVICE);
+            manager.enqueue(request);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Click(R.id.btnHTML)
+    public void Visualizar_HTML(){
+        try {
+            String URL_HTML = jsonArticulo.getJSONArray("galeys").getJSONObject(1).getString("UrlViewGalley");
+            this.context.startActivity( new Intent(Intent.ACTION_VIEW, Uri.parse(URL_HTML)));
         } catch (JSONException e) {
             System.out.println("Ha ocurrido un error al descargar el PDF: " + e.getMessage());
         }
